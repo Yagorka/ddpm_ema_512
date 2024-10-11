@@ -1,6 +1,6 @@
 ## Palm image generation images with unconditional latent diffusion
 
-original rep for train ddpm repository[https://github.com/zyinghua/uncond-image-generation-ldm.git]
+original repository for train ddpm [repository](https://github.com/zyinghua/uncond-image-generation-ldm.git)
 
 ### Cloning to local
 ```bash
