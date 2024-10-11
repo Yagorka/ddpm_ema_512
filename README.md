@@ -10,6 +10,11 @@ Then call:
 ```bash
 cd ddpm_ema_512
 ```
+###Installing the dependencies
+Before running the scripts, make sure to install the library's training dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ### Generate images
 ```bash
