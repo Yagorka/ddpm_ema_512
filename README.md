@@ -8,7 +8,7 @@ git clone https://github.com/Yagorka/ddpm_ema_512.git
 ```
 Then call:
 ```bash
-cd uncond-image-generation-ldm
+cd ddpm_ema_512
 ```
 
 ### Generate images
