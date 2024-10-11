@@ -16,6 +16,7 @@ cd uncond-image-generation-ldm
 python gen.py dir_name number_image
 ```
 dir_name - dir for save generated images
-number_images number images for generation
+
+number_images - number images for generation
 
 
