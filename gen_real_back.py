@@ -2,7 +2,7 @@
 import argparse
 import os
 import sys
-from diffusers import AutoPipelineForText2Image
+from diffusers import StableDiffusionPipeline
 import torch
 from tqdm import tqdm
 
@@ -45,7 +45,7 @@ def main():
         print(f"Создана директория {dir_for_save}")
     prompt="realystic photo palmer with fingers, white background, only five realystic fingers"
     model_id = "Yagorka/sd_palm_finetune_plus_lora"
-    pipeline = AutoPipelineForText2Image.from_pretrained(model_id, safety_checker = None,torch_dtype=torch.float16).to("cuda")
+    pipeline = StableDiffusionPipeline.from_pretrained(model_id, safety_checker = None,torch_dtype=torch.float16).to("cuda")
     generate_images(pipeline, prompt, dir_for_save, number_generation, batch_size, start_seed=1000)
 
 
