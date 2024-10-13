@@ -41,38 +41,72 @@
 
 
 ### Датасет
+<p align="center">  
+<img width="80%" src="./images/биометрияхак (5).jpg" alt="banner">
+</p>
 * Открытый [датасет](https://biometricshack.ru/) (5397 подходящих изображений)
 * Собранный датасет из открытых источников (7833 изображений)
 * Отчищенный датасет с удаленным фоном и поворотом ладони перпендекулярно листу (7000 обучение, 700 тест)
+
+
 
 ## <h3 align="start"><a id="title2">Описание решения</a></h3>
 
 ### Контролируемая генерация
 
 #### Stable Diffusion 1.5 
-* Unet 
-* ASR Wave2vec
-* Поиск команды из заданного набора в тексте
-* Вывод в формате .json
+
+* Fine tune SD 1.5 Unet + Lora
+
+<p align="center">  
+<img width="100%" src="./images/биометрияхак.jpg" alt="banner">
+</p>
+
+* Контролируемая генерация по атрибутам
+
+<p align="center">  
+<img width="100%" src="./images/биометрияхак (4).jpg" alt="banner">
+</p>
+
+* Контролируемая генерация по одному целевому изображению (Dreambooth)
+
+<p align="center">  
+<img width="100%" src="./images/биометрияхак (3).jpg" alt="banner">
+</p>
 
 ### Неконтролируемая генерация
 
 #### ProGan
 
+<p align="center">  
+<img width="100%" src="./images/биометрияхак20.jpg" alt="banner">
+</p>
+
 #### DDPM
+
+<p align="center">  
+<img width="100%" src="./images/биометрияхак111.jpg" alt="banner">
+</p>
+
+### Метрики
+
+<p align="center">  
+<img width="100%" src="./images/биометрияхак (1).jpg" alt="banner">
+</p>
  
 ### Структура проекта
 
 ```
-├── app # основная директория проекта
-│   ├── utils # содержит утилиты для работы проекта
-│   ├── main_app.py # тг бот
-│   ├── chat_bot.py # файл ответов на вопросы в формате excel
-│   ├── app.ipynb # demo бота с gradio
-├── data # содержит данные и БД для проекта, а также тестовые вопросы
-├── README.md
-├── requirements.txt
-└── resources # ресурсы проекта
+├── src # основная пакет проекта для использования ddpm
+│   ├── pipeline.py # базовый код для загрузки ddpm
+├── train.py  # файл для обучения DDPM
+├── notebooks # основная пакет проекта для использования ddpm
+│   ├── ddpm_512.ipynb # инференс ddpm, обученной на белом фоне
+├── SD # основная пакет проекта для использования ddpm
+│   ├── dreambooth_train.ipynb # обучение контролируемой генерации похожих по одному целевому изображению
+│   ├── train_text_to_image.ipynb # файнтюнинг SD 1.5 Unet + Lora
+├── README.md # файл с инструкциями
+├── requirements.txt # зависимости
 ```
 
 ## <h3 align="start"><a id="title3">Тестирование решения</a></h3> 
@@ -84,10 +118,6 @@
 ```
 pip install -r requirements.txt
 ```
-
-
-
-
 
 ## Palm image generation images with unconditional latent diffusion
 
