@@ -101,9 +101,10 @@
 ├── src # основная пакет проекта для использования ddpm
 │   ├── pipeline.py # базовый код для загрузки ddpm
 ├── train.py  # файл для обучения DDPM
+├── gen.py # файл для генерации синтетичесских изображений с помощью DDPM (хороший белый фон)
 ├── notebooks # основная пакет проекта для использования ddpm
 │   ├── ddpm_512.ipynb # инференс ddpm, обученной на белом фоне
-    ├── test.ipynb # препроцессинг изображений
+│   ├── test.ipynb # препроцессинг изображений
 ├── SD # основная пакет проекта для использования ddpm
 │   ├── dreambooth_train.ipynb # обучение контролируемой генерации похожих по одному целевому изображению
 │   ├── train_text_to_image.ipynb # файнтюнинг SD 1.5 Unet + Lora
@@ -121,7 +122,7 @@
 pip install -r requirements.txt
 ```
 
-## Palm image generation images with unconditional latent diffusion
+## Palm image generation images with unconditional latent diffusion and condition finetuned SD 1.5
 
 original repository for train ddpm [repository](https://github.com/zyinghua/uncond-image-generation-ldm.git)
 
@@ -139,12 +140,23 @@ Before running the scripts, make sure to install the library's training dependen
 pip install -r requirements.txt
 ```
 
-### Generate images
+### Unconditional generate images (good white background)
 ```bash
 python gen.py dir_name number_image
 ```
 dir_name - dir for save generated images
 
 number_images - number images for generation
+
+### Conditional generate images (good realistic background)
+```bash
+python gen_real_back.py dir_name number_image batch_size
+```
+dir_name - dir for save generated images
+
+number_images - number images for generation
+
+batch_size - batch size (default=4)
+
 
 
