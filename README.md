@@ -100,7 +100,8 @@
 ├── src # основная пакет проекта для использования ddpm
 │   ├── pipeline.py # базовый код для загрузки ddpm
 ├── train.py  # файл для обучения DDPM
-├── gen.py # файл для генерации синтетичесских изображений с помощью DDPM (хороший белый фон)
+├── gen.py # файл для генерации синтетических изображений с помощью DDPM (хороший белый фон)
+├── gen_real_back.py # файл для генерации синтетических изображений с помощью SD 1.5 (разный фон)
 ├── notebooks # основная пакет проекта для использования ddpm
 │   ├── ddpm_512.ipynb # инференс ddpm, обученной на белом фоне
 │   ├── test.ipynb # препроцессинг изображений
@@ -157,5 +158,12 @@ number_images - number images for generation
 
 batch_size - batch size (default=4)
 
+update: lora weight -> https://drive.google.com/drive/folders/17GE_H3zXZv9hXzy2dw3KLF84VivORkhs?usp=sharing
+load lora2 to dir ddpm_ema_512 and uncomment # pipeline.load_lora_weights("lora2", weight_name="pytorch_lora_weights.safetensors") in gen_real_back.py 
+
+```bash
+pipeline = StableDiffusionPipeline.from_pretrained("Yagorka/sd_palm_finetune_plus_lora", safety_checker = None,torch_dtype=torch.float16).to("cuda")
+pipeline.load_lora_weights("path_to_lora2/lora2", weight_name="pytorch_lora_weights.safetensors")
+```
 
 
