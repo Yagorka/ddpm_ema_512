@@ -46,6 +46,7 @@ def main():
     prompt="realystic photo palmer with fingers, white background, only five realystic fingers"
     model_id = "Yagorka/sd_palm_finetune_plus_lora"
     pipeline = StableDiffusionPipeline.from_pretrained(model_id, safety_checker = None,torch_dtype=torch.float16).to("cuda")
+    # pipeline.load_lora_weights("lora2", weight_name="pytorch_lora_weights.safetensors")
     generate_images(pipeline, prompt, dir_for_save, number_generation, batch_size, start_seed=1000)
 
 
